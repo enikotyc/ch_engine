@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-A chess engine to analyze games, uses minimax and alpha-beta search to heuristically determine the winning side.
+A chess engine to analyze games, uses minimax and alpha-beta pruning to heuristically determine the winning side.
 
 The UI is still under development.
 
