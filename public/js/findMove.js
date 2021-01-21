@@ -1,5 +1,4 @@
-var MvvLvaValue = [ 0, 100, 200, 300, 400, 500, 600, 100, 200, 300, 400, 500, 600 ];
-var MvvLvaScores = new Array(14 * 14);
+
 
 function InitMvvLva() {
 	var Attacker;
@@ -383,3 +382,5 @@ function GenerateCaptures() {
 		pce = LoopSlidePce[pceIndex++];
 	}
 }
+var MvvLvaValue = [ 0, 100, 200, 300, 400, 500, 600, 100, 200, 300, 400, 500, 600 ];
+var MvvLvaScores = new Array(14 * 14);

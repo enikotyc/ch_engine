@@ -1,30 +1,3 @@
-$(function() {
-	init();
-	console.log("Main Init Called");	
-	NewGame(START_FEN);
-});
-
-function InitFilesRanksBrd() {
-	
-	var index = 0;
-	var file = FILES.FILE_A;
-	var rank = RANKS.RANK_1;
-	var sq = SQUARES.A1;
-	
-	for(index = 0; index < BRD_SQ_NUM; ++index) {
-		FilesBrd[index] = SQUARES.OFFBOARD;
-		RanksBrd[index] = SQUARES.OFFBOARD;
-	}
-	
-	for(rank = RANKS.RANK_1; rank <= RANKS.RANK_8; ++rank) {
-		for(file = FILES.FILE_A; file <= FILES.FILE_H; ++file) {
-			sq = FR2SQ(file,rank);
-			FilesBrd[sq] = file;
-			RanksBrd[sq] = rank;
-		}
-	}
-}
-
 function InitHashKeys() {
     var index = 0;
 	
@@ -113,36 +86,40 @@ function InitBoardSquares() {
  	}
 }
 
-function InitBoardSquares() {
-	var light = 1;
-	var rankName;
-	var fileName;
-	var divString;
-	var rankIter;
-	var fileIter;
-	var lightString;
+function InitFilesRanksBrd() {
 	
-	for(rankIter = RANKS.RANK_8; rankIter >= RANKS.RANK_1; rankIter--) {
-		light ^= 1;
-		rankName = "rank" + (rankIter + 1);
-		for(fileIter = FILES.FILE_A; fileIter <= FILES.FILE_H; fileIter++) {
-			fileName = "file" + (fileIter + 1);
-			if(light == 0) lightString="Light";
-			else lightString = "Dark";
-			light^=1;
-			divString = "<div class=\"Square " + rankName + " " + fileName + " " + lightString + "\"/>";
-			$("#Board").append(divString);
-		}
+	var index = 0;
+	var file = FILES.FILE_A;
+	var rank = RANKS.RANK_1;
+	var sq = SQUARES.A1;
+	
+	for(index = 0; index < BRD_SQ_NUM; ++index) {
+		FilesBrd[index] = SQUARES.OFFBOARD;
+		RanksBrd[index] = SQUARES.OFFBOARD;
 	}
 	
+	for(rank = RANKS.RANK_1; rank <= RANKS.RANK_8; ++rank) {
+		for(file = FILES.FILE_A; file <= FILES.FILE_H; ++file) {
+			sq = FR2SQ(file,rank);
+			FilesBrd[sq] = file;
+			RanksBrd[sq] = rank;
+		}
+	}
 }
 
+
+$(function() {
+	init();
+	console.log("Initializing Game");	
+	NewGame(START_FEN);
+});
 function init() {
-	console.log("init() called");
-	InitFilesRanksBrd();
-	InitHashKeys();
 	InitSq120To64();
 	InitBoardVars();
 	InitMvvLva();
 	InitBoardSquares();
+	console.log("init() called");
+	InitFilesRanksBrd();
+	InitHashKeys();
+
 }

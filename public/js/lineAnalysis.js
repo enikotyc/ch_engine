@@ -1,30 +1,4 @@
 var perft_leafNodes;
-
-function Perft(depth) { 	
-
-	if(depth == 0) {
-        perft_leafNodes++;
-        return;
-    }	
-    
-    GenerateMoves();
-    
-	var index;
-	var move;
-	
-	for(index = GameBoard.moveListStart[GameBoard.ply]; index < GameBoard.moveListStart[GameBoard.ply + 1]; ++index) {
-	
-		move = GameBoard.moveList[index];	
-		if(MakeMove(move) == BOOL.FALSE) {
-			continue;
-		}		
-		Perft(depth-1);
-		TakeMove();
-	}
-    
-    return;
-}
-
 function PerftTest(depth) {    
 
 	PrintBoard();
@@ -53,3 +27,28 @@ function PerftTest(depth) {
     return;
 
 }
+function Perft(depth) { 	
+
+	if(depth == 0) {
+        perft_leafNodes++;
+        return;
+    }	
+    
+    GenerateMoves();
+    
+	var index;
+	var move;
+	
+	for(index = GameBoard.moveListStart[GameBoard.ply]; index < GameBoard.moveListStart[GameBoard.ply + 1]; ++index) {
+	
+		move = GameBoard.moveList[index];	
+		if(MakeMove(move) == BOOL.FALSE) {
+			continue;
+		}		
+		Perft(depth-1);
+		TakeMove();
+	}
+    
+    return;
+}
+

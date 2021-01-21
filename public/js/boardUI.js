@@ -1,3 +1,13 @@
+function NewGame(fenStr) {
+	ParseFen(fenStr);
+	PrintBoard();
+	SetInitialBoardPieces();
+	CheckAndSet();
+}
+
+function ClearAllPieces() {
+	$(".Piece").remove();
+}
 $("#SetFen").click(function () {
 	var fenStr = $("#fenIn").val();	
 	NewGame(fenStr);
@@ -15,16 +25,6 @@ $('#NewGameButton').click( function () {
 	NewGame(START_FEN);
 });
 
-function NewGame(fenStr) {
-	ParseFen(fenStr);
-	PrintBoard();
-	SetInitialBoardPieces();
-	CheckAndSet();
-}
-
-function ClearAllPieces() {
-	$(".Piece").remove();
-}
 
 function SetInitialBoardPieces() {
 

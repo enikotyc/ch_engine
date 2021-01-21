@@ -1,7 +1,20 @@
 function PrSq(sq) {
 	return (FileChar[FilesBrd[sq]] + RankChar[RanksBrd[sq]]);
 }
+function PrintMoveList() {
 
+	var index;
+	var move;
+	var num = 1;
+	console.log('MoveList:');
+
+	for(index = GameBoard.moveListStart[GameBoard.ply]; index < GameBoard.moveListStart[GameBoard.ply+1]; ++index) {
+		move = GameBoard.moveList[index];
+		console.log('IMove:' + num + ':(' + index + '):' + PrMove(move) + ' Score:' +  GameBoard.moveScores[index]);
+		num++;
+	}
+	console.log('End MoveList');
+}
 function PrMove(move) {	
 	var MvStr;
 	
@@ -28,20 +41,7 @@ function PrMove(move) {
 	return MvStr;
 }
 
-function PrintMoveList() {
 
-	var index;
-	var move;
-	var num = 1;
-	console.log('MoveList:');
-
-	for(index = GameBoard.moveListStart[GameBoard.ply]; index < GameBoard.moveListStart[GameBoard.ply+1]; ++index) {
-		move = GameBoard.moveList[index];
-		console.log('IMove:' + num + ':(' + index + '):' + PrMove(move) + ' Score:' +  GameBoard.moveScores[index]);
-		num++;
-	}
-	console.log('End MoveList');
-}
 
 function ParseMove(from, to) {
 
